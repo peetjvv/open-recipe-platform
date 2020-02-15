@@ -1,4 +1,8 @@
-export type FooState = { foo: string };
-export type FooAction = AddBarAction;
+export type FooState = { bars: string; barCount: number };
+export type FooAction = AddBarAction | IncrementBarCountAction;
 
-export type AddBarAction = { type: 'FOO'; subtype: 'ADD_BAR' };
+type BaseFooAction = { type: 'FOO' };
+export type AddBarAction = BaseFooAction & { subtype: 'ADD_BAR' };
+export type IncrementBarCountAction = BaseFooAction & {
+  subtype: 'INCREMENT_BAR_COUNT';
+};

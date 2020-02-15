@@ -18,7 +18,7 @@ export const appReducer = (
 };
 
 export const initialState = (): StateEffectPair<State, Action> => {
-  const state = Foo.initialState;
+  const state = { foo: Foo.initialState };
   const action = Effects.none() as Effect<any>;
   return [state, action];
 };
