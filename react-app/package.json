@@ -10,7 +10,11 @@
     "start": "webpack-dev-server -d",
     "build": "webpack -p"
   },
-  "pre-commit": "lint-staged",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js,ts,tsx,json,scss,css,md}": [
       "prettier --write",
