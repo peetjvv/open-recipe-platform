@@ -1,0 +1,9 @@
+@import '../../scss/vars.json';
+
+.home {
+  display: block;
+  padding: 3rem;
+  border-radius: 15px;
+  background-color: $color-react;
+  font-size: 2rem;
+}
