@@ -1,9 +1,6 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import "./style.scss";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import App from './app/index';
+import './scss/main.scss';
 
-const App = () => (
-  <div className="greeting">⚛️Start building your React app here!⚛️</div>
-);
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
