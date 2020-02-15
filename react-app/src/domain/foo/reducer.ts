@@ -4,7 +4,7 @@ import { State } from '../types';
 import { throwIfNotNever } from '../../util/typescript';
 import { incrementBarCount } from './action-creators';
 
-export const initialState: FooState = { bars: 'bar', barCount: 1 };
+export const initialState: FooState = { foo: { bars: 'bar', barCount: 1 } };
 
 export const reducer = (
   prevState: State,
