@@ -1,3 +1,4 @@
 *.yml
 *.yaml
 tsconfig.json
+package.json
