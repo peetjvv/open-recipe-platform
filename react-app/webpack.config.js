@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const jsonImporter = require('node-sass-json-importer');
 
 const isDevServer = process.argv.some(v => v.includes('webpack-dev-server'));
 
@@ -19,8 +20,31 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.scss/,
+        loader: [
+          require.resolve('style-loader'),
+          require.resolve('css-loader'),
+          {
+            loader: 'sass-loader',
+            options: {
+              importer: jsonImporter({
+                resolver: function(dir, url) {
+                  if (url.startsWith('~') && url.endsWith('.json')) {
+                    return path.resolve(
+                      __dirname,
+                      'node_modules',
+                      url.substr(1)
+                    );
+                  } else if (url.endsWith('.json')) {
+                    return path.resolve(dir, url);
+                  }
+
+                  return url;
+                },
+              }),
+            },
+          },
+        ],
       },
     ],
   },
