@@ -1,4 +1,4 @@
-export type FooState = { bars: string; barCount: number };
+export type FooState = { foo: { bars: string; barCount: number } };
 export type FooAction = AddBarAction | IncrementBarCountAction;
 
 type BaseFooAction = { type: 'FOO' };
