@@ -1,7 +1,6 @@
-import { RouterAction, RouterState } from 'react-elmish-router';
+export type State = FooState;
 
-export type State = RouterState<Route>;
+export type Action = FooAction;
 
-export type Action = RouterAction<Route>;
-
-export type Route = 'HOME' | 'PAGE_2';
+type FooState = { foo: string };
+type FooAction = { type: 'FOO'; subtype: 'ADD_R' };
