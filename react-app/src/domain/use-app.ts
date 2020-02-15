@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import { State, Action } from './types';
 import useElmish, { StateEffectPair, Effects, Effect } from 'react-use-elmish';
+import * as Foo from './foo/reducer';
 import { routeDefinitions } from './router';
 import { throwIfNotNever } from '../util/typescript';
 
@@ -10,20 +11,14 @@ export const appReducer = (
 ): StateEffectPair<State, Action> => {
   switch (action.type) {
     case 'FOO':
-      switch (action.subtype) {
-        case 'ADD_R':
-          const updatedState = { ...prev, foo: prev.foo + 'r' };
-          return [updatedState, Effects.none()];
-        default:
-          return throwIfNotNever(action.subtype);
-      }
+      return Foo.reducer(prev, action);
     default:
       return throwIfNotNever(action.type);
   }
 };
 
 export const initialState = (): StateEffectPair<State, Action> => {
-  const state = { foo: 'bar' };
+  const state = Foo.initialState;
   const action = Effects.none() as Effect<any>;
   return [state, action];
 };

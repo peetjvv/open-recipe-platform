@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as FaBrandIcons from '@fortawesome/free-brands-svg-icons';
 import { State, Action } from '../../domain/types';
+import { addBar } from '../../domain/foo/action-creators';
+import vars from '../../scss/vars';
+import './style.scss';
 
 const Home: React.FC<{
   state: State;
@@ -12,10 +15,7 @@ const Home: React.FC<{
   const { state, dispatch } = props;
 
   return (
-    <div
-      className="home"
-      onClick={e => dispatch({ type: 'FOO', subtype: 'ADD_R' })}
-    >
+    <div className="home" onClick={e => dispatch(addBar())}>
       <FontAwesomeIcon icon={FaBrandIcons.faReact} /> Start building your React
       app here! - State: {JSON.stringify(state)}
     </div>
