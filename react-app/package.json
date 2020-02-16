@@ -41,6 +41,7 @@
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "clsx": "^1.1.0",
+    "firebase": "^7.8.2",
     "http-status-codes": "^1.4.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7",
