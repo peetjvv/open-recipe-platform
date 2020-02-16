@@ -50,6 +50,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      settings: path.resolve(
+        isDevServer ? './src/settings.dev' : './src/settings.prod'
+      ),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
