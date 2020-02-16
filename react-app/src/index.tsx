@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Home, Error, TopBar } from './app';
+import { Home, Error, TopBar, Recipe, Recipes } from './app';
 import useApp from './domain/use-app';
-import { throwIfNotNever } from './util/typescript';
+import './init-firebase';
 import './scss/main.scss';
 
 const App: React.FC<{}> = () => {
@@ -13,6 +13,13 @@ const App: React.FC<{}> = () => {
     case 'HOME':
       currentMainComponent = <Home state={state} dispatch={dispatch} />;
       break;
+    case 'RECIPES':
+      currentMainComponent = <Recipes />;
+      break;
+    case 'RECIPE':
+    // currentMainComponent = <Recipe recipe={null} />;
+    // break;
+    case 'NEW_RECIPE':
     case false:
     default:
       currentMainComponent = <Error errorCode={404} />;
