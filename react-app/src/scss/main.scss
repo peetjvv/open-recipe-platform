@@ -1,16 +1,17 @@
 @import 'vars.json';
 
+@import 'animation';
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
 
-#app {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $color-secondary;
+  #app {
+    height: 100vh;
+    width: 100vw;
+
+    .content-panel {
+    }
+  }
 }

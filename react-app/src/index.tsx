@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Home, FourOhFour } from './app';
+import { Home, Error, TopBar } from './app';
 import useApp from './domain/use-app';
 import { throwIfNotNever } from './util/typescript';
 import './scss/main.scss';
@@ -15,11 +15,15 @@ const App: React.FC<{}> = () => {
       break;
     case false:
     default:
-      currentMainComponent = <FourOhFour />;
+      currentMainComponent = <Error errorCode={404} />;
       break;
   }
 
-  return currentMainComponent;
+  return (
+    <div className="content-panel">
+      <TopBar>{currentMainComponent}</TopBar>
+    </div>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById('app'));

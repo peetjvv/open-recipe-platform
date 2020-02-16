@@ -16,8 +16,10 @@ const Home: React.FC<{
 
   return (
     <div className="home" onClick={e => dispatch(addBar())}>
-      <FontAwesomeIcon icon={FaBrandIcons.faReact} /> Start building your React
-      app here! - State: {JSON.stringify(state)}
+      <FontAwesomeIcon icon={FaBrandIcons.faReact} />{' '}
+      <p>
+        Start building your React app here! - State: {JSON.stringify(state)}
+      </p>
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const reducer = (
       return [
         {
           ...prevState,
-          foo: { ...prevState.foo, bars: `${prevState.foo.bars}bar` },
+          foo: { ...prevState.foo, bars: `${prevState.foo.bars} bar` },
         },
         Effects.action(incrementBarCount()),
       ];
