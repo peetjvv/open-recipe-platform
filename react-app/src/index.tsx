@@ -1,9 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Client as Styletron } from 'styletron-engine-atomic';
+import { Provider as StyletronProvider } from 'styletron-react';
+import { BaseProvider } from 'baseui';
+import { StatefulInput } from 'baseui/input';
 import { Home, Error, TopBar, Recipe, Recipes } from './app';
 import useApp from './domain/use-app';
 import './init-firebase';
+import getTheme from './scss/theme';
 import './scss/main.scss';
+
+const engine = new Styletron();
 
 const App: React.FC<{}> = () => {
   const [state, dispatch] = useApp();
@@ -27,9 +34,11 @@ const App: React.FC<{}> = () => {
   }
 
   return (
-    <div className="content-panel">
-      <TopBar>{currentMainComponent}</TopBar>
-    </div>
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={getTheme(state.theme.suite)}>
+        <div className="content-panel">{currentMainComponent}</div>
+      </BaseProvider>
+    </StyletronProvider>
   );
 };
 
