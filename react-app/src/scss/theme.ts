@@ -1,7 +1,18 @@
-import { createTheme, lightThemePrimitives, darkThemePrimitives } from 'baseui';
+import {
+  createTheme,
+  lightThemePrimitives,
+  darkThemePrimitives,
+  createThemedStyled,
+  createThemedUseStyletron,
+  // createThemedWithStyle,
+} from 'baseui';
 import { ThemeSuite } from '../domain/theme';
-import { ThemePrimitives } from 'baseui/theme';
+import { ThemePrimitives, Theme as BaseThemeType } from 'baseui/theme';
 import { throwIfNotNever } from '../util/typescript';
+
+type CustomTheme = BaseThemeType & {
+  // set custom theme properties here
+};
 
 const getPrimitives = (themeSuite: ThemeSuite): ThemePrimitives => {
   let themeSuitePrimitives: ThemePrimitives;
@@ -51,13 +62,17 @@ const getOverrides = (themeSuite: ThemeSuite) => {
       buttonSecondarySelectedText: primitives.accent,
       buttonSecondarySpinnerForeground: primitives.accent700,
       buttonSecondarySpinnerBackground: primitives.accent300,
-
-      // colorPrimary: '#666',
     },
   };
 };
 
-const getTheme = (themeSuite: ThemeSuite) =>
-  createTheme(getPrimitives(themeSuite), getOverrides(themeSuite));
+const getTheme = (themeSuite: ThemeSuite): CustomTheme => ({
+  ...createTheme(getPrimitives(themeSuite), getOverrides(themeSuite)),
+  // set custom theme values here
+});
+
+export const themedStyled = createThemedStyled<CustomTheme>();
+// export const themedWithStyle = createThemedWithStyle<CustomTheme>();
+export const themedUseStyletron = createThemedUseStyletron<CustomTheme>();
 
 export default getTheme;

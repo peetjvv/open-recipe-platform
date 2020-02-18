@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Button } from 'baseui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as FaBrandIcons from '@fortawesome/free-brands-svg-icons';
@@ -15,7 +16,8 @@ const Home: React.FC<{
   const { state, dispatch } = props;
 
   return (
-    <div className="home" onClick={e => dispatch(addBar())}>
+    <div className="home">
+      <Button onClick={e => dispatch(addBar())}>Add bar</Button>
       <FontAwesomeIcon icon={FaBrandIcons.faReact} />{' '}
       <p>
         Start building your React app here! - State: {JSON.stringify(state)}
