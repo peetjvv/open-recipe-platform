@@ -73,6 +73,6 @@ const getTheme = (themeSuite: ThemeSuite): CustomTheme => ({
 
 export const themedStyled = createThemedStyled<CustomTheme>();
 // export const themedWithStyle = createThemedWithStyle<CustomTheme>();
-export const themedUseStyletron = createThemedUseStyletron<CustomTheme>();
+export const useStyletron = createThemedUseStyletron<CustomTheme>();
 
 export default getTheme;

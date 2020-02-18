@@ -36,6 +36,7 @@ const App: React.FC<{}> = () => {
   return (
     <StyletronProvider value={engine}>
       <BaseProvider theme={getTheme(state.theme.suite)}>
+        <TopBar dispatch={dispatch} />
         <div className="content-panel">{currentMainComponent}</div>
       </BaseProvider>
     </StyletronProvider>
