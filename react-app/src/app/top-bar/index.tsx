@@ -8,13 +8,13 @@ import {
 import { Button } from 'baseui/button';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
-import { useStyletron } from '../../scss/theme';
+import { useThemedStyletron } from '../../scss/theme';
 import Link from '../components/link';
 
 const TopBar: React.FC<{ dispatch: Dispatch<Action> }> = props => {
   const { dispatch } = props;
 
-  const [css, theme] = useStyletron();
+  const [css, theme] = useThemedStyletron();
 
   return (
     <HeaderNavigation>

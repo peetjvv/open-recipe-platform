@@ -34,9 +34,11 @@ const getPrimitives = (themeSuite: ThemeSuite): ThemePrimitives => {
   }
 
   return {
-    // global theme primitives here
     ...themeSuitePrimitives,
-    // primaryFontFamily: 'Delius', // TODO: make the setting of the primary font family work here
+
+    // global theme primitives here
+    primaryFontFamily: 'Delius',
+
     accent: '#F127E4', // hot pink
     accent50: '#FDEDFC',
     accent100: '#FCD3F9',
@@ -73,6 +75,6 @@ const getTheme = (themeSuite: ThemeSuite): CustomTheme => ({
 
 export const themedStyled = createThemedStyled<CustomTheme>();
 // export const themedWithStyle = createThemedWithStyle<CustomTheme>();
-export const useStyletron = createThemedUseStyletron<CustomTheme>();
+export const useThemedStyletron = createThemedUseStyletron<CustomTheme>();
 
 export default getTheme;

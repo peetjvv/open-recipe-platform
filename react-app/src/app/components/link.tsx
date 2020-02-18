@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link as ElmishLink } from 'react-elmish-router/dist/components';
 import { StyledLink } from 'baseui/link';
 import { Route } from '../../domain/router';
-import { useStyletron } from '../../scss/theme';
+import { useThemedStyletron } from '../../scss/theme';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
 
