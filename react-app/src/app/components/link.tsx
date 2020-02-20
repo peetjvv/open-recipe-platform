@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Link as ElmishLink } from 'react-elmish-router/dist/components';
 import { StyledLink } from 'baseui/link';
 import { Route, routeDefinitions } from '../../domain/router';
 import { useThemedStyletron } from '../../scss/theme';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
+import { dispatchNavigate } from 'react-elmish-router';
 
 const Link: React.FC<{
   dispatch: Dispatch<Action>;
@@ -20,18 +20,12 @@ const Link: React.FC<{
   return (
     <StyledLink
       href={routeDefinitions[to]}
-      onClick={(e: React.MouseEvent) =>
-        e && e.preventDefault && e.preventDefault()
-      }
+      onClick={(e: React.MouseEvent) => {
+        e && e.preventDefault && e.preventDefault();
+        dispatchNavigate<Route>(to, pushHistory, payload, dispatch);
+      }}
     >
-      <ElmishLink
-        dispatch={dispatch}
-        route={to}
-        match={payload}
-        pushHistory={pushHistory}
-      >
-        {children}
-      </ElmishLink>
+      {children}
     </StyledLink>
   );
 };
