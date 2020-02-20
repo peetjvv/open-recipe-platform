@@ -18,11 +18,8 @@ const Home: React.FC<{
 
   return (
     <div className="home">
-      <Button onClick={e => dispatch(addBar())}>Add bar</Button>
-      <FontAwesomeIcon icon={FaBrandIcons.faReact} />{' '}
-      <p>
-        Start building your React app here! - State: {JSON.stringify(state)}
-      </p>
+      <Button onClick={() => dispatch(addBar())}>Add bar</Button>
+      <p>State: {JSON.stringify(state)}</p>
     </div>
   );
 };

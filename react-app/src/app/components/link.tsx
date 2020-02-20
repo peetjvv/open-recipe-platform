@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link as ElmishLink } from 'react-elmish-router/dist/components';
 import { StyledLink } from 'baseui/link';
-import { Route } from '../../domain/router';
+import { Route, routeDefinitions } from '../../domain/router';
 import { useThemedStyletron } from '../../scss/theme';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
@@ -18,6 +18,7 @@ const Link: React.FC<{
   return (
     <StyledLink>
       {/* TODO: fix style not showing when no href is provided. also, show link for href in bottom right popup thingy */}
+      {/* href={routeDefinitions[to]} */}
       <ElmishLink
         dispatch={dispatch}
         route={to}
