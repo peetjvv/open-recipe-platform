@@ -13,6 +13,8 @@ export const appReducer = (
   prev: State,
   action: Action
 ): StateEffectPair<State, Action> => {
+  console.log(action);
+
   switch (action.type) {
     case 'INGREDIENTS':
       return Ingredients.reducer(prev, action);
