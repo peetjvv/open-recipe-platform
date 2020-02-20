@@ -1,7 +1,7 @@
 import { StateEffectPair } from 'react-use-elmish';
 import { RouterAction, routerReducer } from 'react-elmish-router';
-import { State } from '../types';
-import { throwIfNotNever } from '../../util/typescript';
+import { State } from './types';
+import { throwIfNotNever } from './../util/typescript';
 
 export const routeDefinitions = {
   HOME: '/',

@@ -1,271 +1,92 @@
 import * as React from 'react';
-import clsx from 'clsx';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import {
-  createStyles,
-  fade,
-  Theme,
-  makeStyles,
-  useTheme,
-} from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import {
-  useScrollTrigger,
-  Slide,
-  Container,
-  CssBaseline,
-  Drawer,
-} from '@material-ui/core';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+  HeaderNavigation,
+  ALIGN,
+  StyledNavigationItem as NavigationItem,
+  StyledNavigationList as NavigationList,
+} from 'baseui/header-navigation';
+import { Button, KIND, SHAPE } from 'baseui/button';
+import { StatefulSelect as Search, TYPE } from 'baseui/select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
+import { Dispatch } from 'react-use-elmish';
+import { Action, State } from '../../domain/types';
+import { useThemedStyletron } from '../../scss/theme';
+import Link from '../components/link';
 
-const drawerWidth = 240;
-
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-  children: React.ReactElement;
-}
-
-const HideOnScroll = (props: Props) => {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
+const options = {
+  options: [
+    { id: 'AliceBlue', color: '#F0F8FF' },
+    { id: 'AntiqueWhite', color: '#FAEBD7' },
+    { id: 'Aqua', color: '#00FFFF' },
+  ],
+  labelKey: 'id',
+  valueKey: 'color',
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    hide: {
-      display: 'none',
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-    },
-    drawerOpen: {
-      width: drawerWidth,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    drawerClose: {
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      overflowX: 'hidden',
-      width: theme.spacing(7) + 1,
-      [theme.breakpoints.up('sm')]: {
-        width: theme.spacing(7) + 1,
-      },
-    },
-    title: {
-      flexGrow: 1,
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
-    },
-    toolbar: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      padding: theme.spacing(0, 1),
-      ...theme.mixins.toolbar,
-    },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-      },
-    },
-    searchIcon: {
-      width: theme.spacing(7),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 7),
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: 120,
-        '&:focus': {
-          width: 200,
-        },
-      },
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-    },
-  })
-);
+const TopBar: React.FC<{
+  state: State;
+  dispatch: Dispatch<Action>;
+}> = props => {
+  const { state, dispatch } = props;
 
-const TopBar: React.FC<Props> = props => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const [css, theme] = useThemedStyletron();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open,
-              })}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Open recipe platform
-            </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-          </Toolbar>
-        </AppBar>
-      </HideOnScroll>
-      <Toolbar />
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <Container disableGutters fixed>
-        {props.children}
-      </Container>
-    </div>
+    <HeaderNavigation overrides={{ Root: { style: { padding: '0px 32px' } } }}>
+      {/* TODO: set padding in theme */}
+      <NavigationList $align={ALIGN.left}>
+        <NavigationItem>
+          <Link dispatch={dispatch} to="HOME">
+            Open recipes
+          </Link>
+        </NavigationItem>
+      </NavigationList>
+      <NavigationList $align={ALIGN.center} />
+      <NavigationList $align={ALIGN.right}>
+        <NavigationItem>
+          <Link dispatch={dispatch} to="NEW_RECIPE">
+            New recipe
+          </Link>
+        </NavigationItem>
+        <NavigationItem>
+          <Link dispatch={dispatch} to="RECIPES">
+            Recipes
+          </Link>
+        </NavigationItem>
+      </NavigationList>
+      <NavigationList $align={ALIGN.right}>
+        <NavigationItem>
+          <Button
+            kind={KIND.tertiary}
+            shape={SHAPE.round}
+            onClick={() =>
+              dispatch({
+                type: 'THEME',
+                subtype: 'SET_THEME_SUITE',
+                payload: state.theme.suite === 'LIGHT' ? 'DARK' : 'LIGHT',
+              })
+            }
+          >
+            <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} />
+          </Button>
+        </NavigationItem>
+      </NavigationList>
+      <NavigationList $align={ALIGN.right}>
+        <NavigationItem style={{ width: '200px' }}>
+          <Search
+            {...options}
+            placeholder="Search recipes…"
+            maxDropdownHeight="300px"
+            type={TYPE.search}
+            // getOptionLabel={props =>
+            //   props.option && props.option.id ? props.option.id : null
+            // }
+            onChange={() => {}}
+          />
+        </NavigationItem>
+      </NavigationList>
+    </HeaderNavigation>
   );
 };
 

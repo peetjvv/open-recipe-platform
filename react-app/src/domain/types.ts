@@ -1,10 +1,11 @@
 import { RouterState, RouterAction } from 'react-elmish-router';
 import { FooState, FooAction } from './foo/types';
 import { Route } from './router';
+import { ThemeState, ThemeAction } from './theme';
 
-export type State = FooState & RouterState<Route>;
+export type State = FooState & RouterState<Route> & ThemeState;
 
-export type Action = FooAction | RouterAction<Route>;
+export type Action = FooAction | RouterAction<Route> | ThemeAction;
 
 export type Ingredient = {
   id: string;
