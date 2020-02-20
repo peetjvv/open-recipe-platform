@@ -57,11 +57,12 @@ const TopBar: React.FC<{
           <Button
             kind={KIND.tertiary}
             shape={SHAPE.pill}
+            startEnhancer={() => <FontAwesomeIcon icon={FaSolidIcons.faPlus} />}
             onClick={() =>
               dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
             }
           >
-            <FontAwesomeIcon icon={FaSolidIcons.faPlus} /> New recipe
+            New recipe
           </Button>
         </NavigationItem>
         <NavigationItem>
