@@ -4,7 +4,7 @@ import { Client as Styletron } from 'styletron-engine-atomic';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { BaseProvider } from 'baseui';
 import { StatefulInput } from 'baseui/input';
-import { Home, Error, TopBar, Recipe, Recipes } from './app';
+import { TopBar, Home, NewRecipe, Recipe, Recipes, Error } from './app';
 import useApp from './domain/use-app';
 import './init-firebase';
 import getTheme from './scss/theme';
@@ -20,13 +20,15 @@ const App: React.FC<{}> = () => {
     case 'HOME':
       currentMainComponent = <Home state={state} dispatch={dispatch} />;
       break;
-    case 'RECIPES':
-      currentMainComponent = <Recipes />;
+    case 'NEW_RECIPE':
+      currentMainComponent = <NewRecipe state={state} dispatch={dispatch} />;
       break;
+    case 'RECIPES':
+    // currentMainComponent = <Recipes />;
+    // break;
     case 'RECIPE':
     // currentMainComponent = <Recipe recipe={null} />;
     // break;
-    case 'NEW_RECIPE':
     case false:
     default:
       currentMainComponent = <Error errorCode={404} />;

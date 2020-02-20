@@ -13,6 +13,8 @@ import { Dispatch } from 'react-use-elmish';
 import { Action, State } from '../../domain/types';
 import { useThemedStyletron } from '../../scss/theme';
 import Link from '../components/link';
+import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
+import { Route } from '../../domain/router';
 
 const options = {
   options: [
@@ -45,17 +47,23 @@ const TopBar: React.FC<{
       <NavigationList $align={ALIGN.center} />
       <NavigationList $align={ALIGN.right}>
         <NavigationItem>
-          <Link dispatch={dispatch} to="NEW_RECIPE">
-            New recipe
-          </Link>
-        </NavigationItem>
-        <NavigationItem>
           <Link dispatch={dispatch} to="RECIPES">
             Recipes
           </Link>
         </NavigationItem>
       </NavigationList>
       <NavigationList $align={ALIGN.right}>
+        <NavigationItem>
+          <Button
+            kind={KIND.tertiary}
+            shape={SHAPE.pill}
+            onClick={() =>
+              dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
+            }
+          >
+            <FontAwesomeIcon icon={FaSolidIcons.faPlus} /> New recipe
+          </Button>
+        </NavigationItem>
         <NavigationItem>
           <Button
             kind={KIND.tertiary}
