@@ -1,22 +1,18 @@
 import { RouterState, RouterAction } from 'react-elmish-router';
-import { FooState, FooAction } from './foo/types';
 import { Route } from './router';
 import { ThemeState, ThemeAction } from './theme';
+import { RecipesState, RecipesAction } from './recipes/types';
+import { IngredientsState, IngredientsAction } from './ingredients/types';
 
-export type State = FooState & RouterState<Route> & ThemeState;
+export type State = IngredientsState &
+  RecipesState &
+  ThemeState &
+  RouterState<Route>;
 
-export type Action = FooAction | RouterAction<Route> | ThemeAction;
+export type Action =
+  | IngredientsAction
+  | RecipesAction
+  | ThemeAction
+  | RouterAction<Route>;
 
-export type Ingredient = {
-  id: string;
-  name: string;
-  dryness: 'wet' | 'dry' | 'other';
-  measurement: 'weight' | 'volume';
-}[];
-
-export type Recipe = {
-  id: string;
-  servings?: number;
-  ingredients: { ingredientId: string; amount: number }[];
-  method: string[];
-};
+export type MapObject<V> = { [key: string]: V };

@@ -6,7 +6,6 @@ import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as FaBrandIcons from '@fortawesome/free-brands-svg-icons';
 import { Dispatch } from 'react-use-elmish';
 import { State, Action } from '../../domain/types';
-import { addBar } from '../../domain/foo/action-creators';
 import vars from '../../scss/vars';
 import './style.scss';
 
@@ -18,7 +17,6 @@ const Home: React.FC<{
 
   return (
     <div className="home">
-      <Button onClick={() => dispatch(addBar())}>Add bar</Button>
       <p>State: {JSON.stringify(state)}</p>
     </div>
   );
