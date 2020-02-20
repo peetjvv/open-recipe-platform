@@ -15,10 +15,15 @@ const Link: React.FC<{
 }> = props => {
   const { dispatch, to, children, payload = {}, pushHistory = true } = props;
 
+  const [css, theme] = useThemedStyletron();
+
   return (
-    <StyledLink>
-      {/* TODO: fix style not showing when no href is provided. also, show link for href in bottom right popup thingy */}
-      {/* href={routeDefinitions[to]} */}
+    <StyledLink
+      href={routeDefinitions[to]}
+      onClick={(e: React.MouseEvent) =>
+        e && e.preventDefault && e.preventDefault()
+      }
+    >
       <ElmishLink
         dispatch={dispatch}
         route={to}
