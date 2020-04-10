@@ -14,6 +14,8 @@ export type CreateRecipeAction = BaseRecipeAction & {
 
 export type Recipe = {
   id: string;
+  name: string;
+  aka: string[];
   servings?: number;
   ingredients: { ingredientId: string; amount: number }[];
   method: string[];
