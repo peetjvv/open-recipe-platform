@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'baseui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as FaBrandIcons from '@fortawesome/free-brands-svg-icons';
@@ -12,7 +11,7 @@ import './style.scss';
 const Home: React.FC<{
   state: State;
   dispatch: Dispatch<Action>;
-}> = props => {
+}> = (props) => {
   const { state, dispatch } = props;
 
   return (
