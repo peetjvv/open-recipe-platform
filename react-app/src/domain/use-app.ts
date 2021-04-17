@@ -31,7 +31,7 @@ export const appReducer = (
 
 export const initialState = (): StateEffectPair<State, Action> => {
   const [state, action] = initializeRouter<
-    typeof routeDefinitions,
+    Route,
     Omit<State, 'router'>,
     RouterAction<Route>
   >(routeDefinitions, [

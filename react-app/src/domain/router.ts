@@ -27,7 +27,7 @@ export const reducer = (
       case false: // no matching pages
         return [nextState, nextEffects];
       default:
-        throwIfNotNever(action.route); // Should never hit the default case
+        throwIfNotNever(action); // Should never hit the default case //TODO: uncomment or just replace with react-router
     }
   }
 
