@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as HttpStatus from 'http-status-codes';
-import vars from '../../scss/vars';
 import './style.scss';
 
 const Error: React.FC<{ errorCode?: number }> = props => {

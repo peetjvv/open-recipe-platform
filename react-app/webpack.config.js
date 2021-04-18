@@ -1,9 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const jsonImporter = require('node-sass-json-importer');
 const webpack = require('webpack');
 
-const isDevServer = process.argv.some((v) => v === '--mode=development');
+const isDevServer = process.argv.some(v => v === '--mode=development');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -38,23 +37,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sassOptions: {
-                importer: jsonImporter({
-                  resolver: function (dir, url) {
-                    if (url.startsWith('~') && url.endsWith('.json')) {
-                      return path.resolve(
-                        __dirname,
-                        'node_modules',
-                        url.substr(1)
-                      );
-                    } else if (url.endsWith('.json')) {
-                      return path.resolve(dir, url);
-                    }
-
-                    return url;
-                  },
-                }),
-              },
+              sassOptions: {},
             },
           },
         ],

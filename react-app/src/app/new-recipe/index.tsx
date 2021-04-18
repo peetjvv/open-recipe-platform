@@ -5,7 +5,6 @@ import { Dispatch } from 'react-use-elmish';
 import { Recipe } from '../../domain/recipes/types';
 import { Action, State } from '../../domain/types';
 import { Ingredient } from '../../domain/ingredients/types';
-import vars from '../../scss/vars';
 
 const NewRecipe: React.FC<{
   state: State;
