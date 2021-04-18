@@ -34,6 +34,7 @@ module.exports = {
         use: [
           require.resolve('style-loader'),
           require.resolve('css-loader'),
+          require.resolve('postcss-loader'),
           {
             loader: 'sass-loader',
             options: {
