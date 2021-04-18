@@ -29,7 +29,8 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "tabWidth": 2,
-    "useTabs": false
+    "useTabs": false,
+    "arrowParens": "avoid"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

@@ -7,57 +7,48 @@ import Link from '../components/link';
 import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
 import { Route } from '../../domain/router';
 
-const options = {
-  options: [
-    { id: 'AliceBlue', color: '#F0F8FF' },
-    { id: 'AntiqueWhite', color: '#FAEBD7' },
-    { id: 'Aqua', color: '#00FFFF' },
-  ],
-  labelKey: 'id',
-  valueKey: 'color',
-};
-
 const TopBar: React.FC<{
   state: State;
   dispatch: Dispatch<Action>;
-}> = (props) => {
+}> = props => {
   const { state, dispatch } = props;
 
   return (
-    <div>
-      <Link dispatch={dispatch} to="HOME">
-        Open recipes
-      </Link>
-      <Link dispatch={dispatch} to="RECIPES">
-        Recipes
-      </Link>
-      <button
-        onClick={() =>
-          dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
-        }
-      >
-        <FontAwesomeIcon icon={FaSolidIcons.faPlus} /> New recipe
-      </button>
-      <button
-        onClick={() =>
-          dispatch({
-            type: 'THEME',
-            subtype: 'SET_THEME_SUITE',
-            payload: state.theme.suite === 'LIGHT' ? 'DARK' : 'LIGHT',
-          })
-        }
-      >
-        <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} />
-      </button>
-      <input
-        // {...options}
-        placeholder="Search recipes…"
-        type="search"
-        // getOptionLabel={props =>
-        //   props.option && props.option.id ? props.option.id : null
-        // }
-        onChange={() => {}}
-      />
+    <div className="flex h-15 px-4 py-4">
+      <div className="flex-grow align-middle">
+        <Link dispatch={dispatch} to="HOME">
+          Open recipes
+        </Link>
+        <Link dispatch={dispatch} to="RECIPES">
+          Recipes
+        </Link>
+      </div>
+
+      <div className="align-middle">
+        <button
+          onClick={() =>
+            dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
+          }
+        >
+          <FontAwesomeIcon icon={FaSolidIcons.faPlus} />
+        </button>
+        <button
+          onClick={() =>
+            dispatch({
+              type: 'THEME',
+              subtype: 'SET_THEME_SUITE',
+              payload: state.theme.suite === 'LIGHT' ? 'DARK' : 'LIGHT',
+            })
+          }
+        >
+          <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} />
+        </button>
+        <input
+          placeholder="Search recipes …"
+          type="search"
+          onChange={() => {}}
+        />
+      </div>
     </div>
   );
 };
