@@ -37,7 +37,7 @@ const App: React.FC<{}> = props => {
 
   return (
     <div className="w-screen h-screen font-body text-black dark:text-white dark:bg-grey-dark">
-      <TopBar state={state} dispatch={dispatch} />
+      <TopBar themeSuite={state.theme.suite} dispatch={dispatch} />
       <div className="content-panel">{currentMainComponent}</div>
     </div>
   );

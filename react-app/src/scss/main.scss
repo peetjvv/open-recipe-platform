@@ -1,3 +1,17 @@
 @import './peetjvv-styles-tailwind/main.scss';
 
 @import 'animation.scss';
+
+html {
+  body {
+    #app {
+      .error-page {
+        height: calc(100vh - 57px - 8px);
+
+        svg.fa-poo {
+          filter: drop-shadow(0px 0px 1px black);
+        }
+      }
+    }
+  }
+}

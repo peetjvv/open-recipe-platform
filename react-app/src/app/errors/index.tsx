@@ -1,9 +1,7 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as HttpStatus from 'http-status-codes';
-import './style.scss';
 
 const Error: React.FC<{ errorCode?: number }> = props => {
   const { errorCode } = props;
@@ -18,15 +16,18 @@ const Error: React.FC<{ errorCode?: number }> = props => {
   }
 
   return (
-    <div className={`error-page ${errorCode}`}>
-      <div className="stuff">
-        <div className="left">
-          <FontAwesomeIcon icon={FaSolidIcons.faPoo} className="bounce" />
-          <span>Oh crap!</span>
+    <div className={`error-page flex justify-center items-center`}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center flex-col mr-16">
+          <FontAwesomeIcon
+            icon={FaSolidIcons.faPoo}
+            className="animate-mybounce text-brown mb-4 text-9xl"
+          />
+          <span className="text-2xl font-bold">Oh crap!</span>
         </div>
-        <div className="right">
-          <span className="code">{errorCode}</span>
-          <span className="message">{message}</span>
+        <div className="flex items-center flex-col">
+          <span className="italic font-lighter text-9xl">{errorCode}</span>
+          <span className="text-2xl">{message}</span>
         </div>
       </div>
     </div>

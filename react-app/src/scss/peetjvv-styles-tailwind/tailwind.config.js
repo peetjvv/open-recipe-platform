@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: [],
-  darkMode: 'class', // options: false / 'media' / 'class'
+  darkMode: false, // options: false / 'media' / 'class'
   theme: {
     colors: {
       transparent: 'transparent',
@@ -13,6 +13,9 @@ module.exports = {
         // light: '#85d7ff',
         DEFAULT: '#1a79bc',
         // dark: '#009eeb',
+      },
+      brown: {
+        DEFAULT: '#7d4300',
       },
       grey: {
         dark: '#151c26',

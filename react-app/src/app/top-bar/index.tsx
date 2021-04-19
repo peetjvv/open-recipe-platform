@@ -2,19 +2,20 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import { Dispatch } from 'react-use-elmish';
-import { Action, State } from '../../domain/types';
+import { Action } from '../../domain/types';
 import Link from '../components/link';
 import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
 import { Route } from '../../domain/router';
+import { ThemeSuite } from '../../domain/theme';
 
 const TopBar: React.FC<{
-  state: State;
+  themeSuite: ThemeSuite;
   dispatch: Dispatch<Action>;
 }> = props => {
-  const { state, dispatch } = props;
+  const { themeSuite, dispatch } = props;
 
   return (
-    <div className="flex h-15 px-4 py-4">
+    <div className="flex h-15 px-4 py-4 border-b border-black dark:border-white mb-4">
       <div className="flex-grow align-middle">
         <Link dispatch={dispatch} to="HOME">
           Open recipes
@@ -37,7 +38,7 @@ const TopBar: React.FC<{
             dispatch({
               type: 'THEME',
               subtype: 'SET_THEME_SUITE',
-              payload: state.theme.suite === 'LIGHT' ? 'DARK' : 'LIGHT',
+              payload: themeSuite === 'LIGHT' ? 'DARK' : 'LIGHT',
             })
           }
         >
