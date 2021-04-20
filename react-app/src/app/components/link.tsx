@@ -10,7 +10,7 @@ const Link: React.FC<{
   payload?: { [key: string]: string };
   pushHistory?: boolean;
   children: React.ReactNode;
-}> = (props) => {
+}> = props => {
   const { dispatch, to, children, payload = {}, pushHistory = true } = props;
 
   return (

@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: [],
-  darkMode: false, // options: false / 'media' / 'class'
+  darkMode: 'class', // options: false / 'media' / 'class'
   theme: {
     colors: {
       transparent: 'transparent',
@@ -27,8 +27,8 @@ module.exports = {
     extend: {},
 
     fontFamily: {
-      display: ['Sniglet', 'cursive'],
-      body: ['Sniglet', 'cursive'],
+      display: ['Sniglet'],
+      body: ['Nunito'],
     },
 
     screens: {

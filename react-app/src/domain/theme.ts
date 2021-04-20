@@ -17,9 +17,10 @@ export const initialState: ThemeState = {
   theme: {
     // initial theme should match user prefered theme
     // TODO: try pull from localStorage first - https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
-    suite: window.matchMedia('(prefers-color-scheme: dark)').matches
+    /*window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'DARK'
-      : 'LIGHT',
+      : 'LIGHT',*/
+    suite: 'LIGHT', // defaulting to light for now
   },
 };
 export const reducer = (

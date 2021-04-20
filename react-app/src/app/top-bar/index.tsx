@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
-import Link from '../components/link';
+import { Link } from '../components';
 import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
 import { Route } from '../../domain/router';
 import { ThemeSuite } from '../../domain/theme';
