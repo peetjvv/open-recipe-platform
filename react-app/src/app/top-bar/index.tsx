@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
-import { Link } from '../components';
+import { Link, Toggle } from '../components';
 import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
 import { Route } from '../../domain/router';
 import { ThemeSuite } from '../../domain/theme';
@@ -33,17 +33,17 @@ const TopBar: React.FC<{
         >
           <FontAwesomeIcon icon={FaSolidIcons.faPlus} />
         </button>
-        <button
-          onClick={() =>
+        <Toggle
+          value={themeSuite === 'DARK'}
+          onChange={() =>
             dispatch({
               type: 'THEME',
               subtype: 'SET_THEME_SUITE',
               payload: themeSuite === 'LIGHT' ? 'DARK' : 'LIGHT',
             })
           }
-        >
-          <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} />
-        </button>
+        />
+        {/* <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} /> */}
         <input
           placeholder="Search recipes …"
           type="search"
