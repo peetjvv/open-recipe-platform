@@ -8,19 +8,19 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       white: '#fefefe',
-      black: '#141414',
+      black: 'var(--pt-black)',
+      grey: {
+        DEFAULT: 'var(--pt-grey)',
+        light: 'var(--pt-grey-light)',
+        dark: 'var(--pt-grey-dark)',
+      },
       blue: {
+        DEFAULT: 'var(--pt-blue)',
         // light: '#85d7ff',
-        DEFAULT: '#1a79bc',
         // dark: '#009eeb',
       },
       brown: {
-        DEFAULT: '#7d4300',
-      },
-      grey: {
-        dark: '#151c26',
-        DEFAULT: '#333333',
-        light: '#d9d9d9',
+        DEFAULT: 'var(--pt-brown)',
       },
     },
 
@@ -29,6 +29,13 @@ module.exports = {
     fontFamily: {
       display: ['Sniglet', 'cursive'],
       body: ['Sniglet', 'cursive'],
+    },
+
+    screens: {
+      sm: { max: 'var(--breakpoint-sm)' },
+      md: { min: 'var(--breakpoint-sm)', max: 'var(--breakpoint-md)' },
+      lg: { min: 'var(--breakpoint-md)', max: 'var(--breakpoint-lg)' },
+      xl: { min: 'var(--breakpoint-lg)' },
     },
   },
   variants: {

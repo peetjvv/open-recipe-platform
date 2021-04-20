@@ -1,0 +1,33 @@
+/// colours
+$pt-white: #fefefe;
+$pt-black: #141414;
+
+$pt-grey: #333333;
+$pt-grey-light: #d9d9d9;
+$pt-grey-dark: #151c26;
+
+$pt-blue: #1a79bc;
+$pt-brown: #7d4300;
+
+:root {
+  --pt-white: #{$pt-white};
+  --pt-black: #{$pt-black};
+
+  --pt-grey: #{$pt-grey};
+  --pt-grey-light: #{$pt-grey-light};
+  --pt-grey-dark: #{$pt-grey-dark};
+
+  --pt-blue: #{$pt-blue};
+  --pt-brown: #{$pt-brown};
+}
+
+/// breakpoints
+$breakpoint-sm: 425px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1440px;
+
+:root {
+  --breakpoint-sm: #{$breakpoint-sm};
+  --breakpoint-md: #{$breakpoint-md};
+  --breakpoint-lg: #{$breakpoint-lg};
+}
