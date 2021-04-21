@@ -15,7 +15,7 @@ const TopBar: React.FC<{
   const { themeSuite, dispatch } = props;
 
   return (
-    <div className="flex h-15 px-4 py-4 border-b border-black dark:border-white mb-4">
+    <div className="flex h-15 px-4 py-4 rounded-lg mb-4 bg-white dark:bg-grey-dark bg-opacity-95 dark:bg-opacity-5">
       <div className="flex-grow align-middle">
         <Link dispatch={dispatch} to="HOME">
           Open recipes
