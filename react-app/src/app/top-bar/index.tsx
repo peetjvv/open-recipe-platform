@@ -25,7 +25,7 @@ const TopBar: React.FC<{
         </Link>
       </div>
 
-      <div className="align-middle">
+      <div className="flex">
         <button
           onClick={() =>
             dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
@@ -42,6 +42,8 @@ const TopBar: React.FC<{
               payload: themeSuite === 'LIGHT' ? 'DARK' : 'LIGHT',
             })
           }
+          iconUnchecked={FaSolidIcons.faSun}
+          iconChecked={FaSolidIcons.faUserNinja}
         />
         {/* <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} /> */}
         <input

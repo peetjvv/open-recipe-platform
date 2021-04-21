@@ -1,6 +1,6 @@
 .toggle-container {
   .toggle {
-    &::after {
+    &::before {
       content: '';
       position: absolute;
       top: 0;
@@ -12,9 +12,29 @@
       background-color: $pt-grey;
       transition: all 0.08s cubic-bezier(0.4, 0, 1, 1);
     }
-    &[aria-checked='true']::after {
-      left: 1;
+    &[aria-checked='true']::before {
       transform: translateX(1rem);
+    }
+
+    svg {
+      position: absolute;
+      color: $pt-white;
+      font-size: 0.75rem;
+      transform: translate(4px, 0px);
+      transition: all 0.08s cubic-bezier(0.4, 0, 1, 1);
+    }
+    &[aria-checked='true'] svg {
+      transform: translate(21px, 0px);
+    }
+  }
+}
+
+html.dark {
+  .toggle-container {
+    .toggle {
+      ::before {
+        background-color: $pt-grey-light;
+      }
     }
   }
 }
