@@ -9,7 +9,7 @@
       width: 1.25rem;
       border-radius: 1.25rem;
       margin-top: -0.25rem;
-      background-color: $pt-grey;
+      background-color: $pt-black;
       transition: all 0.08s cubic-bezier(0.4, 0, 1, 1);
     }
     &[aria-checked='true']::before {
@@ -32,8 +32,11 @@
 html.dark {
   .toggle-container {
     .toggle {
-      ::before {
-        background-color: $pt-grey-light;
+      &::before {
+        background-color: $pt-white;
+      }
+      svg {
+        color: $pt-black;
       }
     }
   }

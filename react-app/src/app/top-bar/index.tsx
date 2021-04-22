@@ -15,8 +15,8 @@ const TopBar: React.FC<{
   const { themeSuite, dispatch } = props;
 
   return (
-    <div className="flex h-15 px-4 py-4 rounded-lg mb-4 bg-white dark:bg-grey-dark bg-opacity-95 dark:bg-opacity-5">
-      <div className="flex-grow align-middle">
+    <div className="top-bar flex h-15 px-4 py-4 rounded-lg mb-4 bg-white dark:bg-grey-dark bg-opacity-95 dark:bg-opacity-5">
+      <div className="left flex-grow align-middle">
         <Link dispatch={dispatch} to="HOME">
           Open recipes
         </Link>
@@ -25,7 +25,7 @@ const TopBar: React.FC<{
         </Link>
       </div>
 
-      <div className="flex">
+      <div className="right flex">
         <button
           onClick={() =>
             dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)

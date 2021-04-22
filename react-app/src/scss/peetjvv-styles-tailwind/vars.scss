@@ -22,12 +22,13 @@ $pt-brown: #7d4300;
 }
 
 /// breakpoints
-$breakpoint-sm: 425px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1440px;
+$breakpoint-mobile: 425px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$responsive-transition-duration: 0.25s;
 
 :root {
-  --breakpoint-sm: #{$breakpoint-sm};
-  --breakpoint-md: #{$breakpoint-md};
-  --breakpoint-lg: #{$breakpoint-lg};
+  --breakpoint-mobile: #{$breakpoint-mobile};
+  --breakpoint-tablet: #{$breakpoint-tablet};
+  --breakpoint-desktop: #{$breakpoint-desktop};
 }

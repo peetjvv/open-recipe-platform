@@ -30,10 +30,16 @@ module.exports = {
     },
 
     screens: {
-      sm: { max: 'var(--breakpoint-sm)' },
-      md: { min: 'var(--breakpoint-sm)', max: 'var(--breakpoint-md)' },
-      lg: { min: 'var(--breakpoint-md)', max: 'var(--breakpoint-lg)' },
-      xl: { min: 'var(--breakpoint-lg)' },
+      mobile: { max: 'var(--breakpoint-mobile)' },
+      tablet: {
+        min: 'var(--breakpoint-mobile)',
+        max: 'var(--breakpoint-tablet)',
+      },
+      desktop: {
+        min: 'var(--breakpoint-tablet)',
+        max: 'var(--breakpoint-desktop)',
+      },
+      wide: { min: 'var(--breakpoint-desktop)' },
     },
   },
   variants: {

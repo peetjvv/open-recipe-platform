@@ -19,7 +19,7 @@ const Error: React.FC<{ errorCode?: number }> = props => {
     <div
       className={`error-page flex justify-center items-center m-auto select-none`}
     >
-      <div className="flex items-center justify-between py-20 px-32">
+      <div className="flex items-center justify-between">
         <div className="flex items-center flex-col mr-16">
           <FontAwesomeIcon
             icon={FaSolidIcons.faPoo}

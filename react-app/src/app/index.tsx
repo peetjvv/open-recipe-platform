@@ -38,7 +38,7 @@ const App: React.FC<{}> = props => {
 
   return (
     <div className="flex flex-col items-center h-screen font-body text-black dark:text-grey-light">
-      <div className="page-container flex-grow flex flex-col w-11/12 my-16">
+      <div className="page-container flex-grow flex flex-col my-16">
         <TopBar themeSuite={state.theme.suite} dispatch={dispatch} />
         <div className="content-panel flex-grow flex rounded-lg bg-white dark:bg-grey-dark bg-opacity-90 dark:bg-opacity-10">
           {currentMainComponent}
