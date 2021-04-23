@@ -1,0 +1,34 @@
+/// colours
+$pt-white: #fefefe;
+$pt-black: #141414;
+
+$pt-grey: #333333;
+$pt-grey-light: #d9d9d9;
+$pt-grey-dark: #151c26;
+
+$pt-blue: #1a79bc;
+$pt-brown: #7d4300;
+
+:root {
+  --pt-white: #{$pt-white};
+  --pt-black: #{$pt-black};
+
+  --pt-grey: #{$pt-grey};
+  --pt-grey-light: #{$pt-grey-light};
+  --pt-grey-dark: #{$pt-grey-dark};
+
+  --pt-blue: #{$pt-blue};
+  --pt-brown: #{$pt-brown};
+}
+
+/// breakpoints
+$breakpoint-mobile: 425px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$responsive-transition-duration: 0.25s;
+
+:root {
+  --breakpoint-mobile: #{$breakpoint-mobile};
+  --breakpoint-tablet: #{$breakpoint-tablet};
+  --breakpoint-desktop: #{$breakpoint-desktop};
+}

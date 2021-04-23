@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'baseui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as FaBrandIcons from '@fortawesome/free-brands-svg-icons';
 import { Dispatch } from 'react-use-elmish';
 import { State, Action } from '../../domain/types';
-import vars from '../../scss/vars';
 import './style.scss';
 
 const Home: React.FC<{

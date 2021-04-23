@@ -1,20 +1,53 @@
-@import 'vars.json';
-@import 'settings';
+@import './peetjvv-styles-tailwind/main.scss';
+@import '../app/components/styles.scss';
 
-@import 'animation';
+@import 'animation.scss';
 
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html {
+  background-image: url('../img/bg-light.jpg');
+  &.dark {
+    background-image: url('../img/bg-dark.jpg');
+  }
 
-  font-family: 'Delius';
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-  #app {
-    height: 100vh;
-    width: 100vw;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
-    .content-panel {
+  background-position-x: left;
+  background-position-y: bottom;
+
+  body {
+    #app {
+      .page-container {
+        // wide (16:9) and larger
+        width: 1024px;
+        transition-duration: $responsive-transition-duration;
+
+        .error-page {
+          svg.fa-poo {
+            filter: drop-shadow(0px 0px 1px $pt-black);
+          }
+        }
+
+        @media screen and (max-width: $breakpoint-desktop) and (min-width: $breakpoint-tablet) {
+          // normal size
+          width: 90%;
+        }
+
+        @media screen and (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile) {
+          // tablet
+          width: 90%;
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+          // mobile
+          width: 100vw;
+        }
+      }
     }
   }
 }

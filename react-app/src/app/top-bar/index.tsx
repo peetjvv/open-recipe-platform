@@ -1,101 +1,58 @@
 import * as React from 'react';
-import {
-  HeaderNavigation,
-  ALIGN,
-  StyledNavigationItem as NavigationItem,
-  StyledNavigationList as NavigationList,
-} from 'baseui/header-navigation';
-import { Button, KIND, SHAPE } from 'baseui/button';
-import { StatefulSelect as Search, TYPE } from 'baseui/select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import { Dispatch } from 'react-use-elmish';
-import { Action, State } from '../../domain/types';
-import { useThemedStyletron } from '../../scss/theme';
-import Link from '../components/link';
+import { Action } from '../../domain/types';
+import { Link, Toggle } from '../components';
 import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
 import { Route } from '../../domain/router';
-
-const options = {
-  options: [
-    { id: 'AliceBlue', color: '#F0F8FF' },
-    { id: 'AntiqueWhite', color: '#FAEBD7' },
-    { id: 'Aqua', color: '#00FFFF' },
-  ],
-  labelKey: 'id',
-  valueKey: 'color',
-};
+import { ThemeSuite } from '../../domain/theme';
 
 const TopBar: React.FC<{
-  state: State;
+  themeSuite: ThemeSuite;
   dispatch: Dispatch<Action>;
 }> = props => {
-  const { state, dispatch } = props;
-
-  const [css, theme] = useThemedStyletron();
+  const { themeSuite, dispatch } = props;
 
   return (
-    <HeaderNavigation overrides={{ Root: { style: { padding: '0px 32px' } } }}>
-      {/* TODO: set padding in theme */}
-      <NavigationList $align={ALIGN.left}>
-        <NavigationItem>
-          <Link dispatch={dispatch} to="HOME">
-            Open recipes
-          </Link>
-        </NavigationItem>
-      </NavigationList>
-      <NavigationList $align={ALIGN.center} />
-      <NavigationList $align={ALIGN.right}>
-        <NavigationItem>
-          <Link dispatch={dispatch} to="RECIPES">
-            Recipes
-          </Link>
-        </NavigationItem>
-      </NavigationList>
-      <NavigationList $align={ALIGN.right}>
-        <NavigationItem>
-          <Button
-            kind={KIND.tertiary}
-            shape={SHAPE.pill}
-            startEnhancer={() => <FontAwesomeIcon icon={FaSolidIcons.faPlus} />}
-            onClick={() =>
-              dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
-            }
-          >
-            New recipe
-          </Button>
-        </NavigationItem>
-        <NavigationItem>
-          <Button
-            kind={KIND.tertiary}
-            shape={SHAPE.round}
-            onClick={() =>
-              dispatch({
-                type: 'THEME',
-                subtype: 'SET_THEME_SUITE',
-                payload: state.theme.suite === 'LIGHT' ? 'DARK' : 'LIGHT',
-              })
-            }
-          >
-            <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} />
-          </Button>
-        </NavigationItem>
-      </NavigationList>
-      <NavigationList $align={ALIGN.right}>
-        <NavigationItem style={{ width: '200px' }}>
-          <Search
-            {...options}
-            placeholder="Search recipes…"
-            maxDropdownHeight="300px"
-            type={TYPE.search}
-            // getOptionLabel={props =>
-            //   props.option && props.option.id ? props.option.id : null
-            // }
-            onChange={() => {}}
-          />
-        </NavigationItem>
-      </NavigationList>
-    </HeaderNavigation>
+    <div className="top-bar flex h-15 px-4 py-4 rounded-lg mb-4 bg-white dark:bg-grey-dark bg-opacity-95 dark:bg-opacity-5">
+      <div className="left flex-grow align-middle">
+        <Link dispatch={dispatch} to="HOME">
+          Open recipes
+        </Link>
+        <Link dispatch={dispatch} to="RECIPES">
+          Recipes
+        </Link>
+      </div>
+
+      <div className="right flex">
+        <button
+          onClick={() =>
+            dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
+          }
+        >
+          <FontAwesomeIcon icon={FaSolidIcons.faPlus} />
+        </button>
+        <Toggle
+          value={themeSuite === 'DARK'}
+          onChange={() =>
+            dispatch({
+              type: 'THEME',
+              subtype: 'SET_THEME_SUITE',
+              payload: themeSuite === 'LIGHT' ? 'DARK' : 'LIGHT',
+            })
+          }
+          iconUnchecked={FaSolidIcons.faSun}
+          iconChecked={FaSolidIcons.faUserNinja}
+        />
+        {/* <FontAwesomeIcon icon={FaSolidIcons.faLightbulb} /> */}
+        <input
+          placeholder="Search recipes …"
+          type="search"
+          onChange={() => {}}
+        />
+      </div>
+    </div>
   );
 };
 

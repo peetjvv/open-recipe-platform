@@ -1,48 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Client as Styletron } from 'styletron-engine-atomic';
-import { Provider as StyletronProvider } from 'styletron-react';
-import { BaseProvider } from 'baseui';
-import { StatefulInput } from 'baseui/input';
-import { TopBar, Home, NewRecipe, Recipe, Recipes, Error } from './app';
-import useApp from './domain/use-app';
+import App from './app';
 import './init-firebase';
-import getTheme from './scss/theme';
-import './scss/main.scss';
-
-const engine = new Styletron();
-
-const App: React.FC<{}> = () => {
-  const [state, dispatch] = useApp();
-
-  let currentMainComponent;
-  switch (state.router.currentRoute) {
-    case 'HOME':
-      currentMainComponent = <Home state={state} dispatch={dispatch} />;
-      break;
-    case 'NEW_RECIPE':
-      currentMainComponent = <NewRecipe state={state} dispatch={dispatch} />;
-      break;
-    case 'RECIPES':
-    // currentMainComponent = <Recipes />;
-    // break;
-    case 'RECIPE':
-    // currentMainComponent = <Recipe recipe={null} />;
-    // break;
-    case false:
-    default:
-      currentMainComponent = <Error errorCode={404} />;
-      break;
-  }
-
-  return (
-    <StyletronProvider value={engine}>
-      <BaseProvider theme={getTheme(state.theme.suite)}>
-        <TopBar state={state} dispatch={dispatch} />
-        <div className="content-panel">{currentMainComponent}</div>
-      </BaseProvider>
-    </StyletronProvider>
-  );
-};
 
 ReactDOM.render(<App />, document.getElementById('app'));

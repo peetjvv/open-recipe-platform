@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { StyledLink } from 'baseui/link';
 import { Route, routeDefinitions } from '../../domain/router';
-import { useThemedStyletron } from '../../scss/theme';
+import { dispatchNavigate } from 'react-elmish-router';
 import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
-import { dispatchNavigate } from 'react-elmish-router';
 
 const Link: React.FC<{
   dispatch: Dispatch<Action>;
@@ -15,10 +13,8 @@ const Link: React.FC<{
 }> = props => {
   const { dispatch, to, children, payload = {}, pushHistory = true } = props;
 
-  const [css, theme] = useThemedStyletron();
-
   return (
-    <StyledLink
+    <a
       href={routeDefinitions[to]}
       onClick={(e: React.MouseEvent) => {
         e && e.preventDefault && e.preventDefault();
@@ -26,7 +22,7 @@ const Link: React.FC<{
       }}
     >
       {children}
-    </StyledLink>
+    </a>
   );
 };
 

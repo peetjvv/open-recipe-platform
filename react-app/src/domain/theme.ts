@@ -13,7 +13,16 @@ export type SetThemeSuiteAction = BaseThemeAction & {
   payload: ThemeSuite;
 };
 
-export const initialState: ThemeState = { theme: { suite: 'LIGHT' } };
+export const initialState: ThemeState = {
+  theme: {
+    // initial theme should match user prefered theme
+    // TODO: try pull from localStorage first - https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
+    /*window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'DARK'
+      : 'LIGHT',*/
+    suite: 'LIGHT', // defaulting to light for now
+  },
+};
 export const reducer = (
   prevState: State,
   action: ThemeAction
