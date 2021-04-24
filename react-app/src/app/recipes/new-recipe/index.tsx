@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import * as ReactDOM from 'react-dom';
 import { Dispatch } from 'react-use-elmish';
-import { Recipe } from '../../domain/recipes/types';
-import { Action, State } from '../../domain/types';
-import { Ingredient } from '../../domain/ingredients/types';
+import { CreatingRecipe, Recipe } from '../../../domain/recipes/types';
+import { Action, State } from '../../../domain/types';
+import { Ingredient } from '../../../domain/ingredients/types';
 
 const NewRecipe: React.FC<{
   state: State;
@@ -16,12 +15,17 @@ const NewRecipe: React.FC<{
     dispatch({ type: 'INGREDIENTS', subtype: 'FETCH_INGREDIENTS' });
   }, []);
 
-  const [newRecipe, setNewRecipe] = useState<Partial<Recipe>>();
+  const [newRecipe, setNewRecipe] = useState<CreatingRecipe>({
+    name: '',
+    aka: [],
+    ingredients: [],
+    steps: [],
+  });
   const [newIngredients, setNewIngredients] = useState<Partial<Ingredient>[]>(
     []
   );
 
-  return null;
+  return <div>TODO: new recipe page here</div>;
 };
 
 export default NewRecipe;
