@@ -12,11 +12,21 @@ export type CreateRecipeAction = BaseRecipeAction & {
   payload: Recipe;
 };
 
+// TODO
+// export type DietaryRequirement = 'vegetarian' | 'vegan' | 'lactose intolerant';
+
 export type Recipe = {
   id: string;
   name: string;
   aka: string[];
   servings?: number;
   ingredients: { ingredientId: string; amount: number }[];
-  method: string[];
+  steps: string[];
+  createdDate: string;
+  lastModified: string;
 };
+
+export type CreatingRecipe = Omit<
+  Recipe,
+  'id' | 'createdDate' | 'lastModified'
+>;

@@ -3,11 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as HttpStatus from 'http-status-codes';
 
-const Error: React.FC<{ errorCode?: number }> = props => {
-  const { errorCode } = props;
+const Error: React.FC<{
+  errorCode?: number;
+  /**
+   * The
+   */
+  overrideMessage?: string;
+}> = props => {
+  const { errorCode, overrideMessage = '' } = props;
 
-  let message: string = 'Unkown error ocurred';
-  if (!!errorCode) {
+  let message = 'Unkown error ocurred';
+  if (!!overrideMessage) {
+    message = overrideMessage;
+  } else if (!!errorCode) {
     try {
       message = HttpStatus.getStatusText(errorCode);
     } catch (error) {

@@ -6,6 +6,7 @@
 html {
   background-image: url('../img/bg-light.jpg');
   &.dark {
+    background-color: $pt-black; // fallback in case image doesn't load
     background-image: url('../img/bg-dark.jpg');
   }
 

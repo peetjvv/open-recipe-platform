@@ -62,7 +62,7 @@
     "http-status-codes": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-elmish-router": "^2.0.0",
+    "react-router-dom": "^5.2.0",
     "react-use-elmish": "^1.0.0"
   },
   "devDependencies": {
@@ -70,6 +70,7 @@
     "@testing-library/react": "^11.2.6",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@types/react-router-dom": "^5.1.7",
     "autoprefixer": "^10.2.5",
     "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
