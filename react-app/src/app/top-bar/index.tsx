@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { Dispatch } from 'react-use-elmish';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
-import { Dispatch } from 'react-use-elmish';
 import { Action } from '../../domain/types';
-import { Link, Toggle } from '../components';
-import { navigateEffect, dispatchNavigate } from 'react-elmish-router';
-import { Route } from '../../domain/router';
+import { Toggle } from '../components';
 import { ThemeSuite } from '../../domain/theme';
+import { RouteDefinitions } from '../../domain/routes';
 
 const TopBar: React.FC<{
   themeSuite: ThemeSuite;
@@ -17,22 +17,14 @@ const TopBar: React.FC<{
   return (
     <div className="top-bar flex h-15 px-4 py-4 rounded-lg mb-4 bg-white dark:bg-grey-dark bg-opacity-95 dark:bg-opacity-5">
       <div className="left flex-grow align-middle">
-        <Link dispatch={dispatch} to="HOME">
-          Open recipes
-        </Link>
-        <Link dispatch={dispatch} to="RECIPES">
-          Recipes
-        </Link>
+        <Link to={RouteDefinitions.HOME.path}>Open recipes</Link>
+        <Link to={RouteDefinitions.RECIPES.path}>Recipes</Link>
       </div>
 
       <div className="right flex">
-        <button
-          onClick={() =>
-            dispatchNavigate<Route>('NEW_RECIPE', false, {}, dispatch)
-          }
-        >
+        <Link to={RouteDefinitions.NEW_RECIPE.path}>
           <FontAwesomeIcon icon={FaSolidIcons.faPlus} />
-        </button>
+        </Link>
         <Toggle
           value={themeSuite === 'DARK'}
           onChange={() =>
