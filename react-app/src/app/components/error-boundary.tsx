@@ -22,9 +22,9 @@ const ErrorBoundary: React.FC<{
   children: React.ReactNode;
   showDialog?: boolean;
   dialogOptions?: Sentry.ReportDialogOptions;
-  tags?: { key: string; value: Primitive }[];
+  tags?: { [key: string]: Primitive };
 }> = props => {
-  const { children, showDialog = true, dialogOptions = {}, tags = [] } = props;
+  const { children, showDialog = true, dialogOptions = {}, tags = {} } = props;
 
   return (
     <Sentry.ErrorBoundary
@@ -46,10 +46,11 @@ const ErrorBoundary: React.FC<{
         },
       }}
       beforeCapture={scope => {
-        // example tags:
-        tags.forEach(tag => scope.setTag(tag.key, tag.value));
-        scope.setTag('location', 'first');
-        scope.setTag('anotherTag', 'anotherValue');
+        if (!!tags) {
+          scope.setTags(tags);
+        }
+        // TODO: add auth details to scope
+        // TODO: add tag for recipeId if any
       }}
     >
       {children}
