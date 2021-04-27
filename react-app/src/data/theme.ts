@@ -13,13 +13,24 @@ export type SetThemeSuiteAction = PayloadAction<
   ThemeSuite
 >;
 
+const getUserPreferredThemeSuite = (): ThemeSuite => {
+  // 1. check localStorage
+  if (!!localStorage.getItem('themeSuite')) {
+    return localStorage.getItem('themeSuite') === 'DARK' ? 'DARK' : 'LIGHT';
+  }
+
+  // 2. check system settings
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'DARK';
+  }
+
+  // 3. fallback to LIGHT theme
+  return 'LIGHT';
+};
+
 export const initialState: ThemeState = {
   // initial theme should match user prefered theme
-  // TODO: try pull from localStorage first - https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
-  /*window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'DARK'
-      : 'LIGHT',*/
-  suite: 'LIGHT',
+  suite: getUserPreferredThemeSuite(),
 };
 
 export const reducer: Reducer<ThemeState, ThemeAction> = (
@@ -28,6 +39,7 @@ export const reducer: Reducer<ThemeState, ThemeAction> = (
 ) => {
   switch (action.subType) {
     case 'SET_THEME_SUITE':
+      localStorage.setItem('themeSuite', action.payload);
       return {
         ...prevState,
         suite: action.payload,
