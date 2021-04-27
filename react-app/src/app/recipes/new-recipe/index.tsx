@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Dispatch } from 'react-use-elmish';
-import { CreatingRecipe, Recipe } from '../../../domain/recipes/types';
-import { Action, State } from '../../../domain/types';
-import { Ingredient } from '../../../domain/ingredients/types';
+import { Dispatch } from 'react';
+import { CreatingRecipe, Recipe } from '../../../types/recipe';
+import { AllActions, State } from '../../../data';
+import { Ingredient } from '../../../types/ingredient';
 
 const NewRecipe: React.FC<{
   state: State;
-  dispatch: Dispatch<Action>;
+  dispatch: Dispatch<AllActions>;
 }> = props => {
   const { state, dispatch } = props;
 
-  useEffect(() => {
-    dispatch({ type: 'INGREDIENTS', subtype: 'FETCH_INGREDIENTS' });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: 'INGREDIENTS', subtype: 'FETCH_INGREDIENTS' });
+  // }, []);
 
   const [newRecipe, setNewRecipe] = useState<CreatingRecipe>({
     name: '',

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Dispatch } from 'react-use-elmish';
-import { Action, State } from '../../domain/types';
+import { Dispatch } from 'react';
+import { AllActions, State } from '../../data';
 import ViewRecipe from './view-recipe';
 import NewRecipe from './new-recipe';
-import { RouteDefinitions } from '../../domain/routes';
+import { RouteDefinitions } from '../routes';
 
 const Recipes: React.FC<{
   state: State;
-  dispatch: Dispatch<Action>;
+  dispatch: Dispatch<AllActions>;
 }> = props => {
   const { state, dispatch } = props;
 

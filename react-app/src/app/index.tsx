@@ -1,15 +1,16 @@
 import * as React from 'react';
+import { useReducer } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TopBar from './top-bar';
 import Home from './home';
 import { Anchor, Error } from './components';
-import useApp from '../domain/use-app';
+import { AllActions, combinedReducer, initialState, State } from '../data';
 import Recipes from './recipes';
-import { RouteDefinitions } from '../domain/routes';
+import { RouteDefinitions } from './routes';
 import '../scss/main.scss';
 
 const App: React.FC<{}> = props => {
-  const [state, dispatch] = useApp();
+  const [state, dispatch] = useReducer(combinedReducer, initialState);
 
   if (state.theme.suite === 'DARK') {
     document.documentElement.classList.add('dark');
