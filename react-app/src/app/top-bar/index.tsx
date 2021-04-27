@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { Dispatch } from 'react-use-elmish';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
-import { Action } from '../../domain/types';
+import { AllActions } from '../../data';
 import { Toggle } from '../components';
-import { ThemeSuite } from '../../domain/theme';
-import { RouteDefinitions } from '../../domain/routes';
+import { ThemeSuite } from '../../data/theme';
+import { RouteDefinitions } from '../routes';
 
 const TopBar: React.FC<{
   themeSuite: ThemeSuite;
-  dispatch: Dispatch<Action>;
+  dispatch: Dispatch<AllActions>;
 }> = props => {
   const { themeSuite, dispatch } = props;
 
@@ -30,7 +30,7 @@ const TopBar: React.FC<{
           onChange={() =>
             dispatch({
               type: 'THEME',
-              subtype: 'SET_THEME_SUITE',
+              subType: 'SET_THEME_SUITE',
               payload: themeSuite === 'LIGHT' ? 'DARK' : 'LIGHT',
             })
           }

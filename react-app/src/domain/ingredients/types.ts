@@ -1,3 +1,4 @@
+import { Ingredient } from '../../types/ingredient';
 import { MapObject } from '../../types/misc';
 
 export type IngredientsState = { ingredients: MapObject<Ingredient> };
@@ -11,10 +12,3 @@ export type CreateIngredientAction = BaseIngredientsAction & {
 export type FetchIngredientsAction = BaseIngredientsAction & {
   subtype: 'FETCH_INGREDIENTS';
 };
-
-export type Ingredient = {
-  id: string;
-  name: string;
-  dryness: 'wet' | 'dry' | 'other';
-  measurement: 'weight' | 'volume';
-}[];

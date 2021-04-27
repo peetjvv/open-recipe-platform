@@ -3,7 +3,6 @@ import { State, Action } from './types';
 import useElmish, { StateEffectPair, Effects } from 'react-use-elmish';
 import * as Ingredients from './ingredients/reducer';
 import * as Recipes from './recipes/reducer';
-import * as Theme from './theme';
 import { throwIfNotNever } from '../util/typescript';
 
 export const appReducer = (
@@ -17,8 +16,6 @@ export const appReducer = (
       return Ingredients.reducer(prev, action);
     case 'RECIPES':
       return Recipes.reducer(prev, action);
-    case 'THEME':
-      return Theme.reducer(prev, action);
     default:
       return throwIfNotNever(action);
   }
@@ -29,7 +26,6 @@ export const initialState = (): StateEffectPair<State, Action> => {
     {
       ...Ingredients.initialState,
       ...Recipes.initialState,
-      ...Theme.initialState,
     },
     Effects.none(),
   ];

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { Dispatch } from 'react-use-elmish';
-import { Action, State } from '../../../domain/types';
+import { AllActions, State } from '../../../data';
 
 const ViewRecipe: React.FC<{
   state: State;
-  dispatch: Dispatch<Action>;
+  dispatch: Dispatch<AllActions>;
 }> = props => {
   const { state, dispatch } = props;
 
