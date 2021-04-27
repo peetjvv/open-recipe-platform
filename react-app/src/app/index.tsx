@@ -20,14 +20,7 @@ const App: React.FC<{}> = props => {
 
   return (
     <Router>
-      <ErrorBoundary
-      // TODO: uncomment and use to add tags to sentry alert
-      // beforeCapture={(scope) => {
-      //   // example tags:
-      //   scope.setTag("location", "first");
-      //   scope.setTag("anotherTag", "anotherValue");
-      // }}
-      >
+      <ErrorBoundary>
         <div className="flex flex-col items-center h-screen font-body text-black dark:text-grey-light">
           <div className="page-container flex-grow flex flex-col my-16">
             <TopBar themeSuite={state.theme.suite} dispatch={dispatch} />
