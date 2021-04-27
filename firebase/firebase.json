@@ -36,7 +36,7 @@
       "port": 9094
     },
     "pubsub": {
-      "port": 9096
+      "port": 9095
     },
     "ui": {
       "enabled": true,
