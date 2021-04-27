@@ -5,5 +5,3 @@ import { IngredientsState, IngredientsAction } from './ingredients/types';
 export type State = IngredientsState & RecipesState & ThemeState;
 
 export type Action = IngredientsAction | RecipesAction | ThemeAction;
-
-export type MapObject<V> = { [key: string]: V };

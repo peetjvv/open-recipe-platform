@@ -1,4 +1,4 @@
-import { MapObject } from '../types';
+import { MapObject } from '../../types/misc';
 
 export type IngredientsState = { ingredients: MapObject<Ingredient> };
 export type IngredientsAction = CreateIngredientAction | FetchIngredientsAction;
