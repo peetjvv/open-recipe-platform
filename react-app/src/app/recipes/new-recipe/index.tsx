@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Dispatch } from 'react-use-elmish';
+import { Dispatch } from 'react';
 import { CreatingRecipe, Recipe } from '../../../types/recipe';
 import { AllActions, State } from '../../../data';
 import { Ingredient } from '../../../types/ingredient';

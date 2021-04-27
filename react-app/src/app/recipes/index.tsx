@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Dispatch } from 'react-use-elmish';
+import { Dispatch } from 'react';
 import { AllActions, State } from '../../data';
 import ViewRecipe from './view-recipe';
 import NewRecipe from './new-recipe';

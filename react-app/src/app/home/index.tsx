@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch } from 'react-use-elmish';
+import { Dispatch } from 'react';
 import { State, AllActions } from '../../data';
 import { db } from '../../firebase';
 import './style.scss';

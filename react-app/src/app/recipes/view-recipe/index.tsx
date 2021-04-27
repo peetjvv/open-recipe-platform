@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Dispatch } from 'react-use-elmish';
+import { Dispatch } from 'react';
 import { AllActions, State } from '../../../data';
 
 const ViewRecipe: React.FC<{

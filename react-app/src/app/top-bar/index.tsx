@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Dispatch } from 'react-use-elmish';
+import { Dispatch } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import { AllActions } from '../../data';
