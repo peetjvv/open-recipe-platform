@@ -10,25 +10,25 @@ const refreshAuthInterval = 55 * 60 * 1000; // refresh token every 55min
 
 // initialise connection to remote firebase environment
 // need this to connect to firebase storage
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
 /// auth stuff
-const firebaseSignIn = () => {
-  firebase.auth().signInAnonymously();
-};
+const auth = firebase.auth();
+// const firebaseSignIn = () => {
+//   auth.signInAnonymously();
+// };
 
-export const refreshFirebaseSession = () => {
-  !!firebase.auth().currentUser
-    ? firebase.auth().currentUser!.getIdToken(true)
-    : firebaseSignIn();
-};
+// export const refreshFirebaseSession = () => {
+//   !!auth.currentUser ? auth.currentUser!.getIdToken(true) : firebaseSignIn();
+// };
 
-setTimeout(() => refreshFirebaseSession(), refreshAuthInterval);
+// setTimeout(() => refreshFirebaseSession(), refreshAuthInterval);
 
-export const firebaseSignOut = () => {
-  firebase.auth().signOut();
-};
+// export const firebaseSignOut = () => {
+//   auth.signOut();
+// };
 
+/// db stuff
 const db = firebase.firestore();
 
 // set up connection to firebase emulator
@@ -36,5 +36,5 @@ if (isLocalEnvironment) {
   db.useEmulator('localhost', 9093);
 }
 
-export { db };
-export default firebase;
+export { auth, db };
+export default app;
