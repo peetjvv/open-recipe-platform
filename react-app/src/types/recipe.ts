@@ -1,3 +1,5 @@
+import { MapObject } from './misc';
+
 // TODO
 // export type DietaryRequirement = 'vegetarian' | 'vegan' | 'lactose intolerant';
 
@@ -12,6 +14,8 @@ export type Recipe = {
   createdDate: string;
   lastModified: string;
 };
+
+export type RecipeMapObject = MapObject<Recipe>;
 
 export type CreatingRecipe = Omit<
   Recipe,

@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Dispatch } from 'react';
-import { AllActions, State } from '../../../data';
 
-const ViewRecipe: React.FC<{
-  state: State;
-  dispatch: Dispatch<AllActions>;
-}> = props => {
-  const { state, dispatch } = props;
+const ViewRecipe: React.FC<{}> = props => {
+  const {} = props;
 
   const { recipeId } = useParams<{ recipeId: string }>();
 
