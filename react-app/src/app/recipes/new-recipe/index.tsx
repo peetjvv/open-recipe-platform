@@ -1,19 +1,10 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { Dispatch } from 'react';
-import { CreatingRecipe, Recipe } from '../../../types/recipe';
-import { AllActions, State } from '../../../data';
+import { useState } from 'react';
+import { CreatingRecipe } from '../../../types/recipe';
 import { Ingredient } from '../../../types/ingredient';
 
-const NewRecipe: React.FC<{
-  state: State;
-  dispatch: Dispatch<AllActions>;
-}> = props => {
-  const { state, dispatch } = props;
-
-  // useEffect(() => {
-  //   dispatch({ type: 'INGREDIENTS', subtype: 'FETCH_INGREDIENTS' });
-  // }, []);
+const NewRecipe: React.FC<{}> = props => {
+  const {} = props;
 
   const [newRecipe, setNewRecipe] = useState<CreatingRecipe>({
     name: '',

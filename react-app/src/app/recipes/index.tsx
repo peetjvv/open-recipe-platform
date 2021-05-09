@@ -1,28 +1,24 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Dispatch } from 'react';
-import { AllActions, State } from '../../data';
 import ViewRecipe from './view-recipe';
 import NewRecipe from './new-recipe';
-import { RouteDefinitions } from '../routes';
+import RecipesList from './recipes-list';
+import { RoutePaths } from '../routes';
 
-const Recipes: React.FC<{
-  state: State;
-  dispatch: Dispatch<AllActions>;
-}> = props => {
-  const { state, dispatch } = props;
+const Recipes: React.FC<{}> = props => {
+  const {} = props;
 
   return (
     <div>
       <Switch>
-        <Route exact path={RouteDefinitions.NEW_RECIPE.path}>
-          <NewRecipe state={state} dispatch={dispatch} />
+        <Route exact path={RoutePaths.NEW_RECIPE}>
+          <NewRecipe />
         </Route>
-        <Route path={RouteDefinitions.VIEW_RECIPE.path}>
-          <ViewRecipe state={state} dispatch={dispatch} />
+        <Route path={RoutePaths.VIEW_RECIPE}>
+          <ViewRecipe />
         </Route>
-        <Route path={RouteDefinitions.RECIPES.path}>
-          TODO: recipes page here
+        <Route path={RoutePaths.RECIPES}>
+          <RecipesList />
         </Route>
       </Switch>
     </div>

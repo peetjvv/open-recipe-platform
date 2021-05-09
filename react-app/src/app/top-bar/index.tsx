@@ -6,7 +6,7 @@ import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 import { AllActions } from '../../data';
 import { Toggle } from '../components';
 import { ThemeSuite } from '../../data/theme';
-import { RouteDefinitions } from '../routes';
+import { RoutePaths } from '../routes';
 
 const TopBar: React.FC<{
   themeSuite: ThemeSuite;
@@ -17,12 +17,12 @@ const TopBar: React.FC<{
   return (
     <div className="top-bar flex h-15 px-4 py-4 rounded-lg mb-4 bg-white dark:bg-grey-dark bg-opacity-95 dark:bg-opacity-5">
       <div className="left flex-grow align-middle">
-        <Link to={RouteDefinitions.HOME.path}>Open recipes</Link>
-        <Link to={RouteDefinitions.RECIPES.path}>Recipes</Link>
+        <Link to={RoutePaths.HOME}>Open recipes</Link>
+        <Link to={RoutePaths.RECIPES}>Recipes</Link>
       </div>
 
       <div className="right flex">
-        <Link to={RouteDefinitions.NEW_RECIPE.path}>
+        <Link to={RoutePaths.NEW_RECIPE}>
           <FontAwesomeIcon icon={FaSolidIcons.faPlus} />
         </Link>
         <Toggle

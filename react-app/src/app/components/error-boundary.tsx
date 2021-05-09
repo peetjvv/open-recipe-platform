@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import * as Sentry from '@sentry/react';
 import { Primitive } from '@sentry/types';
-import { RouteDefinitions } from '../routes';
+import { RoutePaths } from '../routes';
 
 const ErrorBoundaryFallback: React.FC<{
   error: Error;
@@ -14,7 +14,7 @@ const ErrorBoundaryFallback: React.FC<{
     <p>{error.toString()}</p>
     <p>{componentStack}</p>
     <button onClick={() => resetError()}>Try to recover</button>
-    <Link to={RouteDefinitions.HOME.path}>Reload</Link>
+    <Link to={RoutePaths.HOME}>Reload</Link>
   </div>
 );
 
