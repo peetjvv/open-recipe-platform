@@ -13,6 +13,9 @@ export type Recipe = {
   createdBy: string;
   createdDate: string;
   lastModified: string;
+  prepTimeMillis?: number;
+  cookTimeMillis?: number;
+  culture?: string; // indian, asian, african, mexican, etc.
 };
 
 export type RecipeMapObject = MapObject<Recipe>;

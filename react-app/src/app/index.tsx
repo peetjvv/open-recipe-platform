@@ -6,7 +6,7 @@ import Home from './home';
 import { Anchor, Error, ErrorBoundary } from './components';
 import { combinedReducer, initialState } from '../data';
 import Recipes from './recipes';
-import { RouteDefinitions } from './routes';
+import { RoutePaths } from './routes';
 import '../scss/main.scss';
 
 const App: React.FC<{}> = props => {
@@ -26,10 +26,10 @@ const App: React.FC<{}> = props => {
             <TopBar themeSuite={state.theme.suite} dispatch={dispatch} />
             <div className="content-panel flex-grow flex rounded-lg bg-white dark:bg-grey-dark bg-opacity-90 dark:bg-opacity-10">
               <Switch>
-                <Route exact path={RouteDefinitions.HOME.path}>
+                <Route exact path={RoutePaths.HOME}>
                   <Home state={state} dispatch={dispatch} />
                 </Route>
-                <Route path={RouteDefinitions.RECIPES.path}>
+                <Route path={RoutePaths.RECIPES}>
                   <Recipes />
                 </Route>
                 {/* Keep this very last since it's the fallback in case no route matched */}
