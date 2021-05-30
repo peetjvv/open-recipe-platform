@@ -38,6 +38,9 @@
     "pubsub": {
       "port": 9095
     },
+    "storage": {
+      "port": 9096
+    },
     "ui": {
       "enabled": true,
       "port": 9090
