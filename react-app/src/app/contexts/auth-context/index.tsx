@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createContext, useEffect, useState } from 'react';
-import { auth } from '../../firebase';
+import { auth } from '../../../firebase';
 import firebase from 'firebase';
 
 /**
@@ -8,10 +8,6 @@ import firebase from 'firebase';
  * Default to 55min.
  */
 const REFRESH_AUTH_INTERVAL = 55 * 60 * 1000;
-
-// const firebaseSignIn = () => {
-//   auth.signInAnonymously();
-// };
 
 // export const refreshFirebaseSession = () => {
 //   !!auth.currentUser ? auth.currentUser!.getIdToken(true) : firebaseSignIn();

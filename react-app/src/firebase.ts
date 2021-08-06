@@ -12,12 +12,13 @@ const firebaseConfig = settings.firebaseConfig;
 const app = firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
-
 const db = firebase.firestore();
+const storage = firebase.storage();
 
 // set up connection to firebase emulator
 if (isLocalEnvironment) {
   db.useEmulator('localhost', 9093);
+  storage.useEmulator('localhost', 9096);
 }
 
 export { auth, db };
