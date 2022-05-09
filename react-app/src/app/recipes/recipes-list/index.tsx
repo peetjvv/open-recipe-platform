@@ -39,10 +39,14 @@ const RecipesList: React.FC<{}> = props => {
         setRecipes(result);
         setLookupStatus('done');
       })
-      .catch(() => {
+      .catch(error => {
         setLookupStatus('error');
+        console.error(error);
       });
   }, []);
+
+  console.log('lookupStatus', lookupStatus);
+  console.log('recipes', recipes);
 
   let content: React.ReactNode;
   switch (lookupStatus) {
