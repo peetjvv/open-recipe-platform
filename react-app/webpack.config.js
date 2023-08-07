@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const { EnvironmentPlugin } = require('webpack');
 
 const isDevServer = process.argv.some(v => v === '--mode=development');
 
@@ -37,7 +38,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sassOptions: {},
+              implementation: require('sass'),
             },
           },
         ],
@@ -57,6 +58,10 @@ module.exports = {
     },
   },
   plugins: [
+    new EnvironmentPlugin({
+      FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
+      SENTRY_CLIENT_KEY: JSON.stringify(process.env.SENTRY_CLIENT_KEY),
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
