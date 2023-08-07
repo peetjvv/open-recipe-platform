@@ -7,8 +7,7 @@ import App from './app';
 import { getCurrentEnvironment, isLocalEnvironment } from './util/environment';
 
 Sentry.init({
-  dsn:
-    'https://a806dfba41184fd7b7f75c8ddea895b3@o585527.ingest.sentry.io/5737724',
+  dsn: process.env.SENTRY_CLIENT_KEY,
   environment: getCurrentEnvironment(),
   integrations: [new Integrations.BrowserTracing()],
 
@@ -20,7 +19,7 @@ Sentry.init({
   // TODO: set up versioning for sentry
   // release: "open-recipe-platform@" + process.env.npm_package_version,
 
-  beforeSend: e => {
+  beforeSend: (e: any) => {
     if (isLocalEnvironment) {
       return null;
     }
